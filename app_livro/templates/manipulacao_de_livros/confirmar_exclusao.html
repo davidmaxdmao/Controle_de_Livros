@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<div class="card mb-3">
+    <div class="card-header">
+      Tem certeza que deseja remover o livro abaixo?
+    </div>
+    <div class="car-body">
+      <h5 class="card=title">{{livro_bd.titulo}}
+
+      <hr>
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Remove</button>
+    </div>
+</div>
+
+{% endblock conteudo %}
