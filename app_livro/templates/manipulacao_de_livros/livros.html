@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-<h1>lista de livros</h1><a href="{% url 'cadastrar_livro' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Livro"></a>
+{% if user.is_authenticated %}
+    <h1>lista de livros</h1><a href="{% url 'cadastrar_livro' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Livro"></a>
 
-{% for livro in livros %}
-    <div class="card mb-3">
-        <div class="card-body">
-            <h3>{{livro.titulo}}</h3>
-            <h5>{{livro.genero}}</h5>
-            <h5>{{livro.autor}}</h5>
-            <hr>
-            <a href="{% url 'editar_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Editar Livro"> </a>
-            <a href="{% url 'remover_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Remover Livro"></a>
+    {% for livro in livros %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3>{{livro.titulo}}</h3>
+                <h5>{{livro.genero}}</h5>
+                <h5>{{livro.autor}}</h5>
+                <hr>
+                <a href="{% url 'editar_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Editar Livro"> </a>
+                <a href="{% url 'remover_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Remover Livro"></a>
+            </div>
         </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+{% else %}
+    <p>Você não esta logado</p>
+    <a href="{% url 'login' %}"
 
-
-
+{% endif %}
 
 {% endblock conteudo %}

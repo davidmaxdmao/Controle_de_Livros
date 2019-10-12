@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import LivroForm
 from .services import livro_services
 from .entidade.livro import Livro
@@ -6,7 +7,7 @@ from .entidade.livro import Livro
 def listar_livros(request):
     livros = livro_services.listar_livros()
     return render(request,'manipulacao_de_livros/livros.html', {"livros": livros})
-
+@login_required
 def cadastrar_livro(request):
     if request.method == "POST":
         form_livro = LivroForm(request.POST)
