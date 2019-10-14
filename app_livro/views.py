@@ -4,6 +4,7 @@ from .forms import LivroForm
 from .services import livro_services
 from .entidade.livro import Livro
 
+@login_required
 def listar_livros(request):
     livros = livro_services.listar_livros()
     return render(request,'manipulacao_de_livros/livros.html', {"livros": livros})
@@ -22,6 +23,7 @@ def cadastrar_livro(request):
         form_livro = LivroForm()
         return render(request, 'manipulacao_de_livros/form_livro.html', {"form_livro": form_livro})
 
+@login_required
 def editar_livro(request, id):
     livro_bd =  livro_services.listar_livro_id(id)
     form_livro = LivroForm(request.POST or None, instance=livro_bd)
@@ -33,7 +35,7 @@ def editar_livro(request, id):
         livro_services.editar_livro(livro_bd, livro_novo)
         return redirect ('listar_livros')
     return render(request, 'manipulacao_de_livros/form_livro.html', {"form_livro": form_livro})
-
+@login_required
 def remover_livro(request, id):
     livro_bd = livro_services.listar_livro_id(id)
     if request.method == "POST":

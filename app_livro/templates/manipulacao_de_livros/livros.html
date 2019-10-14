@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-{% if user.is_authenticated %}
-    <h1>lista de livros</h1><a href="{% url 'cadastrar_livro' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Livro"></a>
 
+    <h1>lista de livros</h1><a href="{% url 'cadastrar_livro' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Livro"></a>
+    <div class="row">
     {% for livro in livros %}
-        <div class="card mb-3">
-            <div class="card-body">
+        <div class="card mb-3  col-md-4">
+            <div class="card-body ">
                 <h3>{{livro.titulo}}</h3>
                 <h5>{{livro.genero}}</h5>
                 <h5>{{livro.autor}}</h5>
@@ -16,10 +16,7 @@
             </div>
         </div>
     {% endfor %}
-{% else %}
-    <p>Você não esta logado</p>
-    <a href="{% url 'login' %}"
+    </div>
 
-{% endif %}
 
 {% endblock conteudo %}
