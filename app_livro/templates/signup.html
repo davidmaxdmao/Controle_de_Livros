@@ -1,0 +1,21 @@
+{% extends 'base1.html' %}
+
+
+
+{% block conteudo %}
+
+<h2 class="text-center">Sign Up</h2>
+<div class="row justify-content-center">
+<div class="col-12 col-md-4">
+
+  <form method="post" >
+  {% csrf_token %}
+    {{form.as_p}}
+  <div class="text-center">
+    <button type="submit" class="btn btn-info ">Sign Up</button>
+  </div>
+</form>
+</div>
+
+</div>
+{% endblock conteudo %}

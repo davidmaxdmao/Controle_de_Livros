@@ -2,21 +2,22 @@
 
 {% block conteudo %}
 
-    <h1>lista de livros</h1><a href="{% url 'cadastrar_livro' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Livro"></a>
-    <div class="row">
-    {% for livro in livros %}
-        <div class="card mb-3  col-md-4">
-            <div class="card-body ">
-                <h3>{{livro.titulo}}</h3>
-                <h5>{{livro.genero}}</h5>
-                <h5>{{livro.autor}}</h5>
-                <hr>
-                <a href="{% url 'editar_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Editar Livro"> </a>
-                <a href="{% url 'remover_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Remover Livro"></a>
+<h1>lista de livros</h1><a href="{% url 'cadastrar_livro' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Livro"></a>
+<div class="jumbotron ">
+    <div class="row justify-content-center">
+        {% for livro in livros %}
+            <div class="card mb-3  col-md-3 m-2  shadow">
+                <div class="card-body">
+                    <h3>{{livro.titulo}}</h3>
+                    <h5>{{livro.genero}}</h5>
+                    <h5>{{livro.autor}}</h5>
+                    <hr>
+                    <a href="{% url 'editar_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Editar Livro"> </a>
+                    <a href="{% url 'remover_livro' livro.id %}"><input type="button" class="btn btn-primary mb-3" value="Remover Livro"></a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
     </div>
-
+</div>
 
 {% endblock conteudo %}
