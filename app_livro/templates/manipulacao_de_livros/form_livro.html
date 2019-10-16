@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load filtros %}
 {% block conteudo %}
-
+<div class="jumbotron mt-4">
 <form method="post">
     {% csrf_token %}
     <div class="fomr-group">
@@ -20,5 +20,5 @@
         <input type="submit"  value="Salvar" />
     </div>
 </form>
-
+</div>
 {% endblock conteudo %}
